@@ -4,14 +4,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class OverlappingIntervals {
+public class OverlappingInterval {
 	public static void main(String[] args) {
-		int [] arr = {};
-		printArray(arr);
-		
+		int [][] arr = {{1,4}, {1,5}};
+		merge(arr);
 	}
 	
-    public int[][] merge(int[][] arr) {
+    public static int[][] merge(int[][] arr) {
         List<List<Integer>> al = new ArrayList<>();
         
         Arrays.sort(arr, (a,b) -> Integer.compare(a[0], b[0]) );
