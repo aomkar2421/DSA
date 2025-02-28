@@ -1,31 +1,34 @@
 package array.medium;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
-public class TwoSum {
+public class SubarraysWithSumK {
 	public static void main(String[] args) {
-		int [] arr = {2,7,11,15};
+		int [] arr = {4,2,4,5,5,7,3,4,3};
+		int k = 10;
 		printArray(arr);
-		twoSum(arr, 9);
+		System.out.println(subarraySum(arr, k));
 	}
-	
-	public static int[] twoSum(int[] arr, int target) {
+
+	public static int subarraySum(int[] arr, int k) {
+
+		int prefixSum = 0;
+		int cnt = 0;
+
 		HashMap<Integer, Integer> hm = new HashMap<Integer, Integer>();
-		
+		hm.put(0, 1);
+
 		for (int i = 0; i < arr.length; i++) {
-			
-			if (hm.containsKey(target-arr[i])) {
-				int j = hm.get(target-arr[i]);
-				return new int [] {i, j};
-			}
-			
-			hm.put(arr[i], i);
-			
+			prefixSum += arr[i];
+
+			int rem = prefixSum - k;
+			cnt = cnt + hm.getOrDefault(rem, 0);
+
+			hm.put(i, prefixSum);
 		}
-		
-        return new int [] {};
-    }
+
+		return cnt;
+	}
 
 	private static void printArray(int[] arr) {
 		for (int i = 0; i < arr.length; i++) {
