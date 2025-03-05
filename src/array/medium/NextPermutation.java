@@ -2,9 +2,12 @@ package array.medium;
 
 public class NextPermutation {
 	public static void main(String[] args) {
-		int [] arr = {1,3,2};
+		int [] arr = {3,2,1};
+//		int [] arr = {2,1,5,4,3,0,0};
+//		int [] arr = {5,4,3,2,1};
 		printArray(arr);
 		nextPermutation(arr);
+		printArray(arr);
 	}
 	
     public static void nextPermutation(int[] arr) {
@@ -20,7 +23,7 @@ public class NextPermutation {
 
         if (idx == -1) {
 			reverse(arr, 0, n-1);
-            return;
+			return;
 		}
         
         for (int i = n-1; i > idx; i--) {
@@ -30,7 +33,7 @@ public class NextPermutation {
 			}
 		}
         reverse(arr, idx+1, n-1);
-        printArray(arr);
+        
     }
 
 	private static void swap(int[] arr, int i, int j) {
@@ -53,5 +56,6 @@ public class NextPermutation {
 		for (int i = 0; i < arr.length; i++) {
 			System.out.print(arr[i]+" ");
 		}
+		System.out.println();
 	}
 }
