@@ -1,34 +1,69 @@
 package array.hard;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class CountInversion {
 	public static void main(String[] args) {
-		int [][] arr = {{1,4}, {1,5}};
-		merge(arr);
+		int [] arr = {2, 4, 1, 3, 5};
+		printArray(arr);
+		System.out.println(inversionCount(arr));
 	}
-	
-    public static int[][] merge(int[][] arr) {
-        List<List<Integer>> al = new ArrayList<>();
-        
-        Arrays.sort(arr, (a,b) -> Integer.compare(a[0], b[0]) );
-        
-        for (int i = 0; i < arr.length; i++) {
-			if (al.isEmpty() || arr[i][0] > al.get(al.size()-1).get(1)) {
-				al.add(Arrays.asList(arr[i][0], arr[i][1]));
-			}else {
-				al.get( al.size()-1  ).set(1, Math.max(al.get(al.size()-1).get(1), arr[i][1] ));
+
+	static int inversionCount(int arr[]) {
+		int count = mergeSort(arr, 0, arr.length-1);
+		return count;
+	}
+
+	private static int mergeSort(int[] arr, int s, int e) {
+		int count = 0;
+		if(s >= e) return count;
+		int m = s + (e-s)/2;
+		count += mergeSort(arr, s, m);
+		count += mergeSort(arr, m+1, e);
+
+		count += merge(arr, s, m, e);
+		return count;
+	}
+
+
+	private static int merge(int[] arr, int l, int mid, int r) {
+		int count = 0;
+		ArrayList<Integer> temp = new ArrayList<>();
+		int left = l;
+		int right = mid+1;
+
+		while(left<=mid && right<=r) {
+			if(arr[left] <= arr[right]) {
+				temp.add(arr[left]);
+				left++;
+			} else {
+				count += (mid - left + 1);
+				temp.add(arr[right]);
+				right++;
 			}
 		}
-                
-        return al.stream().map(l -> l.stream().mapToInt(Integer :: intValue).toArray()).toArray(int [][] :: new);
-    }
+
+		while(left <= mid) {
+			temp.add(arr[left]);
+			left++;
+		}
+
+		while(right <= r) {
+			temp.add(arr[right]);
+			right++;
+		}
+
+		for(int i=l; i<=r; i++) {
+			arr[i] = temp.get(i-l);
+		}
+		return count;
+	}
 
 	private static void printArray(int[] arr) {
 		for (int i = 0; i < arr.length; i++) {
 			System.out.print(arr[i]+" ");
 		}
+		System.out.println();
 	}
 }
+
