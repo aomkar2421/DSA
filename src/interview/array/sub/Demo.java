@@ -1,9 +1,17 @@
-package array.hard;
+package interview.array.sub;
 
 public class Demo {
 	public static void main(String[] args) {
-		int [] arr = {  };
+		int [] arr = {};
 		printArray(arr);
+		System.out.println(solution(arr));
+	}
+
+	private static int solution(int[] arr) {
+
+		
+		
+		return -1;
 	}
 
 	private static void printArray(int[] arr) {
