@@ -34,7 +34,7 @@ public class KoKoBanana {
     static int calcHours(int [] arr, int speed) {
     	int hours = 0;
     	for (int i = 0; i < arr.length; i++) {
-			hours += Math.ceil(arr[i]/ speed);
+			hours += Math.ceil(arr[i]/speed);
 		}
     	return hours;
     }
