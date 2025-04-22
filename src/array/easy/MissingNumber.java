@@ -2,7 +2,7 @@ package array.easy;
 
 public class MissingNumber {
 	public static void main(String[] args) {
-		int [] arr = {};
+		int [] arr = {1,0,3};
 		printArray(arr);
 		System.out.println(missingNumber(arr));
 	}
@@ -24,5 +24,6 @@ public class MissingNumber {
 		for (int i = 0; i < arr.length; i++) {
 			System.out.print(arr[i]+" ");
 		}
+		System.out.println();
 	}
 }
