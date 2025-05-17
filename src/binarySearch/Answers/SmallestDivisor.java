@@ -18,7 +18,7 @@ public class SmallestDivisor {
     	for (int i = 1; i <= max; i++) {
     		int sum = 0;
 			for (int j = 0; j < arr.length; j++) {
-				sum += Math.ceil(arr[j]/ i);
+				sum += Math.ceilDiv(arr[j], i);
 			}
 			if (sum <= threshold) {
 				return i;

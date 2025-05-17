@@ -42,7 +42,7 @@ public class SmallestDivisor2 {
     public static int findDivSum(int[] arr, int i) {
     	int sum = 0;
     	for (int j = 0; j < arr.length; j++) {
-			sum +=Math.ceil(arr[j]/i);
+			sum += Math.ceilDiv(arr[j], i);
 		}
     	return sum;
     }
