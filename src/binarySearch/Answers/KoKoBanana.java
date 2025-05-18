@@ -20,7 +20,7 @@ public class KoKoBanana {
     	for (int i = 1; i <= maxValue; i++) {
 			int speed = 0;
 			for (int j = 0; j < arr.length; j++) {
-				speed += Math.ceil(arr[j]/i);
+				speed += Math.ceilDivExact(arr[j], i);
 			}
 			if (speed <= h) {
 				return i;
@@ -34,7 +34,7 @@ public class KoKoBanana {
     static int calcHours(int [] arr, int speed) {
     	int hours = 0;
     	for (int i = 0; i < arr.length; i++) {
-			hours += Math.ceil(arr[i]/speed);
+			hours += Math.ceilDiv(arr[i], speed);
 		}
     	return hours;
     }
