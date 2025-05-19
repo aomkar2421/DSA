@@ -6,14 +6,12 @@ public class ReversePairs {
 	public static void main(String[] args) {
 		int [] arr = {1,3,2,3,1};
 		printArray(arr);
-		System.out.println(reversePairs(arr));
+		System.out.println(mergeSort(arr, 0, arr.length-1));
+		printArray(arr);
 	}
-	
-    public static int reversePairs(int[] nums) {
-        return mergeSort(nums, 0, nums.length-1);
-    }
 
-    private static int mergeSort(int[] arr, int s, int e) {
+
+	private static int mergeSort(int[] arr, int s, int e) {
 		int count = 0;
 		if(s >= e) return count;
 		int m = (s+e)/2;
@@ -21,6 +19,7 @@ public class ReversePairs {
 		count += mergeSort(arr, m+1, e);
 		count += countPairs(arr, s, m, e);
 		merge1(arr, s, m, e);
+		//		count += merge2(arr, s, m, e);
 		return count;
 	}
 
@@ -125,5 +124,6 @@ public class ReversePairs {
 		for (int i = 0; i < arr.length; i++) {
 			System.out.print(arr[i]+" ");
 		}
+		System.out.println();
 	}
 }
